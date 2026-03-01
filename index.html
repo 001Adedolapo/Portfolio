@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Portfolio | Ebenezer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* This ensures the filter bar is scrollable but looks clean */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <nav class="fixed w-full z-50 px-8 py-4 flex justify-between items-center bg-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+        <a href="#" class="text-xl font-bold tracking-tighter uppercase text-white hover:text-blue-500 transition-colors">
+            Portfolio<span class="text-blue-500">.</span>
+        </a>
+
+        <div id="nav-links" class="hidden md:flex space-x-10 text-xs uppercase tracking-[0.2em] font-black text-white">
+            <a href="#" class="nav-link hover:text-blue-500 transition-all">Home</a>
+            <a href="#work" class="nav-link hover:text-blue-500 transition-all">Work</a>
+             <a href="#about" class="nav-link hover:text-blue-500 transition-all">About</a>
+            <a href="#services" class="nav-link hover:text-blue-500 transition-all">Services</a>
+            <a href="#contact" class="nav-link hover:text-blue-500 transition-all">Contact</a>
+        </div>
+
+        <div class="flex items-center space-x-6 text-white">
+             <button onclick="toggleTheme()" class="p-2 border border-white/20 rounded-full hover:bg-blue-500/20">🌙</button>
+             <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">☰</button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/95 flex flex-col items-center justify-center space-y-10 text-2xl uppercase tracking-[0.3em] font-light -translate-y-full md:hidden transition-transform duration-500">
+        <button onclick="toggleMobileMenu()" class="absolute top-8 right-8 text-4xl">&times;</button>
+        <a href="#" onclick="toggleMobileMenu()">Home</a> 
+        <a href="#work" onclick="toggleMobileMenu()">Work</a>
+        <a href="#services" onclick="toggleMobileMenu()">Services</a> 
+        <a href="#about" onclick="toggleMobileMenu()">About</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <section class="min-h-screen flex items-center px-8 lg:px-24 pt-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+            <div class="order-2 lg:order-1">
+                <span class="text-blue-500 uppercase tracking-[0.3em] text-sm mb-6 block font-semibold">Available for Projects 2026</span>
+                <h1 class="text-5xl lg:text-8xl font-semibold leading-[1.1] mb-8 tracking-tighter text-white">
+                    I'm Ebenezer, <br> 
+                    <span class="text-blue-500 italic">Digital Visionary.</span>
+                </h1>
+                <p class="max-w-xl text-lg lg:text-xl opacity-50 leading-relaxed font-light mb-10 text-white">
+                    I specialize in crafting high-end digital experiences. With over 50+ projects in UI/UX and Frontend Development.
+                </p>
+                <div class="flex flex-wrap gap-6">
+                    <a href="#work" class="bg-blue-600 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm">View My Work</a>
+                    <a href="#contact" class="border border-white/20 px-10 py-4 rounded-full transition text-sm uppercase tracking-widest text-white hover:bg-white hover:text-black">Let's Talk</a>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-md lg:max-w-lg aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 group">
+                    <img src="Ebenezer.png" alt="Ebenezer" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000 group-hover:scale-105">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sticky top-[72px] z-40 px-8 lg:px-24 py-6 mb-12 flex flex-row items-center space-x-4 overflow-x-auto no-scrollbar flex-nowrap bg-black/50 backdrop-blur-md border-b border-white/5">
+        <button onclick="filterProjects('All')" class="filter-btn whitespace-nowrap px-8 py-2 rounded-full bg-white text-black text-[10px] font-bold uppercase tracking-widest transition shrink-0">All Work</button>
+        <button onclick="filterProjects('UI/UX')" class="filter-btn whitespace-nowrap px-8 py-2 rounded-full border border-white/10 text-white text-[10px] uppercase tracking-widest transition shrink-0">UI/UX Design</button>
+        <button onclick="filterProjects('Frontend')" class="filter-btn whitespace-nowrap px-8 py-2 rounded-full border border-white/10 text-white text-[10px] uppercase tracking-widest transition shrink-0">Frontend Dev</button>
+        <button onclick="filterProjects('Branding')" class="filter-btn whitespace-nowrap px-8 py-2 rounded-full border border-white/10 text-white text-[10px] uppercase tracking-widest transition shrink-0">Branding</button>
+    </div>
+
+    <main id="work" class="px-8 lg:px-24 pb-32">
+        <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </main>
+
+    <section id="about" class="py-32 px-8 lg:px-24 bg-white text-black transition-colors duration-500">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+                <div>
+                    <span class="text-blue-600 uppercase tracking-[0.4em] text-xs font-bold mb-6 block">The Philosophy</span>
+                    <h2 class="text-6xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-12">
+                        Figma <br> Driven. <br> Code <br> <span class="text-blue-600">Perfect.</span>
+                    </h2>
+                    <p class="text-2xl leading-relaxed font-light opacity-80 max-w-md">
+                        I bridge the gap between high-fidelity design and high-performance code.
+                    </p>
+                </div>
+
+                <div class="space-y-12 pt-4">
+                    <div class="space-y-6">
+                        <p class="text-xl leading-relaxed text-neutral-800">
+                            With a track record of over 50+ successfully delivered projects, I specialize in taking raw ideas from Figma blueprints to live, responsive environments.
+                        </p>
+                        <p class="text-lg leading-relaxed text-neutral-500 font-light">
+                            My process ensures that no detail is lost in translation. Using the "Holy Trinity" of the web—Semantic HTML, Tailwind CSS, and Modern JavaScript—I guarantee that the final product is a 1:1 reflection of the design.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-neutral-100 p-8 rounded-3xl group hover:bg-black hover:text-white transition-all duration-500">
+                            <p class="text-5xl font-bold mb-2 tracking-tighter">50+</p>
+                            <p class="text-[10px] uppercase tracking-[0.2em] opacity-50 group-hover:opacity-100">Live Deployments</p>
+                        </div>
+                        <div class="bg-blue-600 text-white p-8 rounded-3xl shadow-xl shadow-blue-200">
+                            <p class="text-5xl font-bold mb-2 tracking-tighter">100%</p>
+                            <p class="text-[10px] uppercase tracking-[0.2em] opacity-80">Design Accuracy</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 pt-4">
+                        <span class="bg-black text-white px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold italic transition-transform hover:scale-105">Figma Design</span>
+                        <span class="border border-black/10 px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold italic">Vanilla JavaScript (ES6+)</span>
+                        <span class="border border-black/10 px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold italic">Tailwind CSS Expert</span>
+                        <span class="border border-black/10 px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold italic">Semantic HTML5</span>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="Ebenezer_CV.pdf" download class="group flex items-center space-x-4 text-xs font-bold uppercase tracking-[0.3em]">
+                            <span class="bg-black text-white p-4 rounded-full group-hover:bg-blue-600 transition-colors duration-500">↓</span>
+                            <span class="border-b border-black pb-1">Download Curriculum Vitae</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-32 px-8 lg:px-24 bg-black text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                <div class="max-w-2xl">
+                    <span class="text-blue-500 uppercase tracking-[0.4em] text-xs font-bold mb-6 block">Expertise</span>
+                    <h2 class="text-5xl lg:text-7xl font-bold tracking-tighter">Solutions for the <br> <span class="italic text-neutral-500">Modern Web.</span></h2>
+                </div>
+                <p class="text-neutral-400 max-w-xs text-sm leading-relaxed pb-2">
+                    Leveraging 50+ projects of experience to deliver products that are as functional as they are beautiful.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+                <div class="group p-10 bg-neutral-900/50 border border-white/5 hover:bg-blue-600 transition-all duration-700">
+                    <div class="text-3xl mb-8">01</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Figma UI/UX</h3>
+                    <p class="text-neutral-400 group-hover:text-white/80 leading-relaxed text-sm mb-8">
+                        High-fidelity wireframing and interactive prototyping. I design with the developer in mind, ensuring a seamless handoff to code.
+                    </p>
+                    <ul class="text-[10px] space-y-2 uppercase tracking-widest opacity-60">
+                        <li>• User Research</li>
+                        <li>• Visual Systems</li>
+                        <li>• Prototype Testing</li>
+                    </ul>
+                </div>
+
+                <div class="group p-10 bg-neutral-900/50 border border-white/5 hover:bg-blue-600 transition-all duration-700">
+                    <div class="text-3xl mb-8">02</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Core Development</h3>
+                    <p class="text-neutral-400 group-hover:text-white/80 leading-relaxed text-sm mb-8">
+                        Writing clean, semantic HTML and optimized Vanilla JavaScript. I build lightweight sites that score 100 on Performance.
+                    </p>
+                    <ul class="text-[10px] space-y-2 uppercase tracking-widest opacity-60">
+                        <li>• Performance Optimization</li>
+                        <li>• Tailwind CSS Styling</li>
+                        <li>• API Integration</li>
+                    </ul>
+                </div>
+
+                <div class="group p-10 bg-neutral-900/50 border border-white/5 hover:bg-blue-600 transition-all duration-700">
+                    <div class="text-3xl mb-8">03</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Visual Identity</h3>
+                    <p class="text-neutral-400 group-hover:text-white/80 leading-relaxed text-sm mb-8">
+                        Defining the look and feel of your brand. From logos to color palettes, I create cohesive identities for digital-first companies.
+                    </p>
+                    <ul class="text-[10px] space-y-2 uppercase tracking-widest opacity-60">
+                        <li>• Logo Design</li>
+                        <li>• Typography Scale</li>
+                        <li>• Brand Guidelines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-8 lg:px-24">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-5xl lg:text-7xl font-bold mb-12 tracking-tighter uppercase underline decoration-blue-500 text-white">Get in Touch</h2>
+            <form id="contact-form" action="https://formspree.io/f/mdalynad" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left mt-20">
+                <div class="flex flex-col">
+                    <label class="text-[10px] tracking-[0.2em] opacity-40 mb-2 text-white">NAME</label>
+                    <input type="text" name="name" required placeholder="Your Name" class="bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-blue-500 transition">
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-[10px] tracking-[0.2em] opacity-40 mb-2 text-white">EMAIL</label>
+                    <input type="email" name="email" required placeholder="email@example.com" class="bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-blue-500 transition">
+                </div>
+                <div class="md:col-span-2 flex flex-col">
+                    <label class="text-[10px] tracking-[0.2em] opacity-40 mb-2 text-white">PROJECT DETAILS</label>
+                    <textarea name="message" required placeholder="Tell me about your vision..." class="bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-blue-500 transition"></textarea>
+                </div>
+                <button type="submit" class="md:col-span-2 mt-10 bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-full font-bold uppercase tracking-widest transition">
+                    Initiate Project
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <div id="success-toast" class="fixed bottom-10 right-10 z-[100] translate-x-[150%] transition-transform duration-500">
+        <div class="bg-blue-600 text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-4 border border-white/20">
+            <div class="bg-white/20 p-2 rounded-full text-xl">✓</div>
+            <div>
+                <p class="font-bold text-sm tracking-widest uppercase">Success!</p>
+                <p class="text-xs opacity-80">Your message is in my inbox.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="fixed bottom-0 left-0 w-full z-50 px-8 py-5 bg-[#0a0a0a]/90 backdrop-blur-xl border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-[0.2em] text-white">
+        <div class="flex items-center space-x-4">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            <p class="font-bold opacity-90">© 2026 Ebenezer <span class="mx-2 opacity-20">|</span> Digital Visionary</p>
+        </div>
+        <div class="hidden md:flex space-x-10 font-bold">
+            <a href="#" class="hover:text-blue-500 transition-colors duration-300">LinkedIn</a>
+            <a href="#" class="hover:text-blue-500 transition-colors duration-300">Twitter</a>
+            <a href="#" class="hover:text-blue-500 transition-colors duration-300">Behance</a>
+        </div>
+        <a href="#" class="mt-4 md:mt-0 font-bold hover:bg-white hover:text-black transition-all duration-300 border border-white/20 px-6 py-2 rounded-full">
+            Back to Top ↑
+        </a>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

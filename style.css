@@ -1,0 +1,65 @@
+html { scroll-behavior: smooth; }
+
+/* Theme Transitions */
+body { 
+    font-family: 'Inter', sans-serif; 
+    transition: background-color 0.4s, color 0.4s; 
+    overflow-x: hidden; 
+}
+
+/* Theme Colors */
+body.dark-mode { background-color: #0a0a0a; color: #fafafa; }
+body.light-mode { background-color: #f5f5f5; color: #111111; }
+
+/* Glassmorphism */
+.glass { backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.dark-mode .glass { background: rgba(255, 255, 255, 0.03); }
+.light-mode .glass { 
+    background: rgba(0, 0, 0, 0.03); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+
+/* Project Cards */
+.project-card:hover .project-overlay { opacity: 1; transform: translateY(0); }
+.project-overlay { transform: translateY(10px); transition: all 0.4s ease; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Mobile Menu */
+#mobile-menu { transition: transform 0.4s ease-in-out; }
+
+/* Animations */
+.fade-in { animation: fadeIn 0.5s ease forwards; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#about {
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 50px rgba(0,0,0,0.1);
+}
+
+.project-card-image-container {
+    background-size: contain; /* Changed from 'cover' */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Find the container that holds your image */
+.project-card { 
+    padding: 20px; /* This pushes the image away from the edges */
+    overflow: visible; /* Ensures nothing gets chopped off */
+}
+
+.project-card-img {
+    width: 100%;
+    height: auto; /* Changed from 300px to auto to maintain proportion */
+    object-fit: contain;
+    display: block;
+}
