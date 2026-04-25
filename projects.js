@@ -96,6 +96,13 @@ export const myProjects = [
         link: "#" 
     },
 
+    { 
+        title: "Handy-connect", 
+        category: "Frontend", 
+        img: "Handy-connect.png", 
+        link: "https://handy-connect-hx8g.vercel.app/" 
+    },
+
      { 
         title: "Logos", 
         category: "Branding", 
@@ -103,11 +110,26 @@ export const myProjects = [
         link: "#" 
     },
 
+    { 
+        title: "SSEBANK", 
+        category: "Frontend", 
+        img: "SSEBANK.png", 
+        link: "https://ssebank.vercel.app/" 
+    },
+
+
      { 
         title: "Cocabit", 
         category: "Frontend", 
         img: "cocabit.png", 
         link: "https://001adedolapo.github.io/Crypto-project/" 
+    },
+
+    { 
+        title: "PETPAUL INTERIOR", 
+        category: "Frontend", 
+        img: "petpaul.png", 
+        link: "https://001adedolapo.github.io/Interior/" 
     },
 
      { 
