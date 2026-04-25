@@ -128,7 +128,7 @@ export const myProjects = [
     { 
         title: "PETPAUL INTERIOR", 
         category: "Frontend", 
-        img: "petpaul.png", 
+        img: "PETPAUL.png", 
         link: "https://001adedolapo.github.io/Interior/" 
     },
 
