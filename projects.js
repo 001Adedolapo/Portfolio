@@ -109,14 +109,7 @@ export const myProjects = [
         img: "B6.jpeg", 
         link: "#" 
     },
-
-    { 
-        title: "SSEBANK", 
-        category: "Frontend", 
-        img: "SSEBANK.png", 
-        link: "https://ssebank.vercel.app/" 
-    },
-
+    
 
      { 
         title: "Cocabit", 
